@@ -71,10 +71,10 @@ func (v *WorkerGroup) Close() error {
 	return nil
 }
 
-// when got singal from this chan, quit.
+// when got signal from this chan, quit.
 func (v *WorkerGroup) QuitForChan(closing chan bool) {
 	go func() {
-		for _ = range closing {
+		for range closing {
 			v.quit()
 		}
 	}()
